@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ToDo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                background-color: rgb(31, 43, 65);
+            }
+
+            #parent_container{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding:30px;   
+            }
+
+            #main_content{
+                background-color: rgb(20, 20, 20);
+                max-width: 700px;
+                border-radius: 10px;
+                border: 2px dashed rgb(128, 128, 128);
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+                row-gap: 10px;
+            }
+
+
+            #main_content_top_heading{
+                font-size: 30px;
+                color: #ffffff;
+                margin-bottom: 0px;
+            }
+
+            #todo_adder{
+                border-radius: 5px;
+                padding:5px;
+            }
+
+            #button{
+                font-size: 15px;
+                color: #ffffff;
+                padding: 10px;
+                background-color: rgb(48, 48, 124);
+                border: none;
+                border-radius: 5px;
+                margin-top:5px;
+            }
+
+            #main_content_bottom{
+                display:flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                column-gap: 10px;
+                row-gap: 10px;
+            }
+
+            .tablet{
+                position:relative;
+                background-color:rgb(222, 184, 135) ;
+                color: rgb(126, 71, 0);
+                min-height: 35px;
+                font-size: 15px;
+                padding: 10px 5px;
+                padding-right:25px;
+                border-radius:5px;
+                box-sizing: border-box;
+                display:flex;
+                justify-content: space-between;
+                width:100%;
+            }
+
+            .remove_button {
+                position: absolute;
+                right:5px;
+                color: #ffffff;
+                border-radius: 50%;
+                border:none;
+                background-color: rgb(126, 71, 0);
+                justify-self: right;
+            }
+
+        </style>
+
+        <script>
+            let task_number=0;
+            function create_task()
+            {
+                // to create task 
+                let todo_task = document.getElementById("todo_adder").value;
+                const task = document.createElement("div");
+                task.innerText= todo_task;
+                document.getElementById("main_content_bottom").appendChild(task);
+                task.classList.add("tablet");
+
+                // to create id for each task (required to add removal button)
+                task_number++;
+                let task_id="task" + task_number;
+                task.setAttribute("id", task_id);
+
+                // to create task_remove button
+                const task_remove = document.createElement("button");
+                task_remove.innerText = "x";
+                task_remove.classList.add("remove_button");
+                document.getElementById(task_id).appendChild(task_remove);
+            }
+            // since we've added eventlistener to the whole doc, it store all the properties of the element we have clicked in 'e'
+            // e.target contains the info about class, id .etc
+            // so if the className of the element we've clicked is equal to the remove_button, we remove its parent element.
+            document.addEventListener("click", function(e){
+                if(e.target.className == "remove_button")
+                {
+                    e.target.parentElement.remove();
+                }
+            })
+
+        </script>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="main_content">
+                <div id="main_content_top">
+                    <p id="main_content_top_heading">ToDo</p>
+                    <p>
+                        <input type="text" id="todo_adder" value="" />
+                        <button id="button" onclick="create_task()">Add</button>
+                    </p>
+                </div>
+
+                <div id="main_content_bottom"> 
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

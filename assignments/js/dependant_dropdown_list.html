@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                background-color: rgb(31, 43, 65);
+            }
+
+            #parent_container{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding:30px;   
+            }
+
+            #main_content{
+                background-color: rgb(20, 20, 20);
+                max-width: 700px;
+                border-radius: 10px;
+                border: 2px dashed rgb(128, 128, 128);
+                display: flex;
+                padding: 30px;
+                column-gap: 20px;
+            }
+
+            .dropdown{
+                font-size: 17px;
+                padding: 7px;
+                border-radius: 5px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="main_content">
+                <div id="main_content_left">
+                    <select id="dropdown_left" class="dropdown">
+                        <option value="Fruit">Fruit</option>
+                        <option value="Animal">Animal</option>
+                        <option value="Bird">Bird</option>
+                        <option value="Car">Car</option>
+                    </select>
+                </div>
+
+                <div id="main_content_right">
+                    <select id="dropdown_right" class="dropdown">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

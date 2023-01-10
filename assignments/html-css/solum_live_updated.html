@@ -1,0 +1,247 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            .office-section{
+                display: flex;
+                margin: auto;
+                max-width: 1024px;
+                row-gap: 20px;
+                flex-wrap: wrap;
+            }
+            
+
+            .office-section-left{
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                flex: 50%;
+                box-sizing: border-box;
+                align-items: center;
+                justify-content: flex-start;
+                position: relative;
+
+            }
+
+            .office-section-right{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 10px;
+                flex: 50%;
+                box-sizing: border-box;
+                align-items: center;
+                row-gap: 20px;
+                justify-content: space-evenly;
+            }
+
+            .office-section-left-lower{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .office-section-right-bottom{
+                bottom:10px;
+                padding-right: 5px;
+                margin-top: auto;
+            }
+
+            .section-description{
+                color: #00244d;
+                font-size: 18px;
+            }
+
+            .section-title{
+                align-self: flex-start;
+                font-size: 35px;
+                margin-top: 0px;
+                margin-bottom:30px;
+                color: rgb(255, 255, 255);
+            }
+
+
+            .section-actions-link:link, .section-actions-link:visited, .section-actions-link:hover, .section-actions-link:active{
+                text-decoration: none;
+                font-size: 13px;
+                font-weight: bold;
+            }
+
+                    
+            .section-main-actions > a:link, .section-main-actions > a:visited, .section-main-actions > a:hover, .section-main-actions > a:active{
+                font-size: 15px;
+                color:black;
+            }
+
+            .learn_more_button{
+                border-radius: 17px;
+                background-color: #00244d;
+                border: none;
+                margin-right: 10px;
+                padding: 3px 8px    ;   
+            }
+
+            .learn_more_button:hover{
+                background-color: #001227;
+            }
+
+            .learn_more_button a:link, a:visited, a:hover, a:active{
+                color:rgb(255, 255, 255);
+            }
+            
+            .section-wrapper{
+                position: relative;
+                color: rgb(255, 255, 255);
+            }
+
+            .section-one{
+                margin-top:35px;
+            }
+
+            .section-content{
+                position: absolute;
+            }
+
+            .section-content-header{
+                font-size: 18px;
+                margin-bottom:10px;
+                margin-top: 0px;
+            }
+
+            .section-content-desc{
+                margin:0px;
+            }
+
+            .section-wrapper[data-position^="left"] .section-content{
+                left: 15px;
+            }
+
+            .section-wrapper[data-position^="right"] .section-content{
+                right: 15px;
+            }
+
+            .section-wrapper[data-position^="center"] .section-content{
+                left:50%;
+                transform: translateX(-50%);
+            }
+
+            .section-wrapper[data-position$="top"] .section-content{
+                top: 15px;
+            }
+
+            .section-wrapper[data-position$="bottom"] .section-content{
+                bottom: 15px;
+            }
+
+            .section-wrapper[data-position$="center"] .section-content{
+                top:50%;
+                transform: translateY(-50%);
+            }
+
+            .office-section[data-overlap-position="top"]{
+                margin-top:-60px;
+            }
+
+            .office-section[data-overlap-position="bottom"]{
+                margin-bottom:-60px;
+            }
+
+            img{
+                max-width: 100%;
+                border-radius: 15px;
+            }
+
+            @media screen and (max-width: 768px) {
+                .office-section{
+                    flex-direction: column;
+                    row-gap: 0px;
+                }
+
+                .office-section-left-lower{
+                    display: flex;
+                    flex-wrap: wrap-reverse;
+                    gap: 15px;
+                }
+
+                .section-one{
+                    margin-top: 0px;
+                }
+
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <img class="pagebuilder-mobile-hidden" style="width:100vw;"src="http://192.168.15.81/customization/solumeslgroup/pub/media/wysiwyg/lifestyle.png" data-element="image_two" data-pb-style="UXPKKQN">
+        <div class="office-section" data-content-type="office" data_width_select="col-w-1024" data-overlap-position="top" data-overlap-value="60px" data-appearance="three-image" data-element="main" data-pb-style="GIKCNCL" style="
+        display: flex;">
+
+            <div class="office-section-left">
+
+                <h2 class="section-title" data-element="header" data-pb-style="R0H20MW">SOLUM Offices</h2>
+
+                <div class="office-section-left-lower">
+                    <div class="office-image-content-wrap">
+                        <div class="section-wrapper section-one" data-position="left top" data-element="section_one" data-pb-style="DXT5SFX">
+                            <div class="section-img">
+                                <img class="pagebuilder-mobile-hidden" src="http://192.168.15.81/customization/solumeslgroup/pub/media/wysiwyg/smart-tag.png" data-element="image" data-pb-style="HEN7T6T">
+                                <div class="section-content">
+                                    <h2 class="section-content-header" data-element="section_one_header" data-pb-style="EPYJDB0">SOLUM Headquarters (HQ)</h2>
+                                    <p class="section-content-desc" data-element="section_one_description" data-pb-style="ME5LW4L">Yongin, South Korea</p>
+                                    <div class="section-actions">
+                                        <a class="section-actions-link" href="" target="" data-link-type="default" data-show-button="never" data-element="section_one_link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="office-section-right-bottom">
+                        <p class="section-description" data-element="description" data-pb-style="AJ005US">Providing Services and Staying connected with Customers in every region</p>    
+                    </div>
+    
+                    <div class="section-main-actions">
+                            <button class="learn_more_button"><a class="section-actions-link" href="http://192.168.15.81/customization/solumeslgroup/pub/faq" target="" data-link-type="page" data-show-button="always" data-element="link" data-pb-style="ED3G9LW">Learn More</a>
+                            </button>
+                            <a class="section-actions-link" href="http://192.168.15.81/customization/solumeslgroup/pub/contacts" target="" data-link-type="page" data-show-button="always" data-element="second_link" data-pb-style="YUVWB6G">Contact Us &gt;</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="office-section-right">
+
+                <div class="section-wrapper section-two" data-position="left top" data-element="section_two" data-pb-style="N0HY5HN">
+                    <div class="section-img">
+                        <img class="pagebuilder-mobile-hidden" src="http://192.168.15.81/customization/solumeslgroup/pub/media/wysiwyg/lifestyle.png" data-element="image_two" data-pb-style="UXPKKQN">
+                    </div>
+                    <div class="section-content">
+                        <h2 class="section-content-header" data-element="section_two_header" data-pb-style="XF7JL82">SOLUM Europe Gmbh</h2>
+                        <p class="section-content-desc" data-element="section_two_description" data-pb-style="R4VX1AO">Frankfurt, Germany</p>
+                        <div class="section-actions">
+                            <a class="section-actions-link" href="" target="" data-link-type="default" data-show-button="always" data-element="section_two_link"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-wrapper section-three" data-position="left top" data-element="section_three" data-pb-style="HFSNN3H">
+                    <div class="section-img">
+                        <img class="pagebuilder-mobile-hidden" src="http://192.168.15.81/customization/solumeslgroup/pub/media/wysiwyg/smart-tag_1.png" data-element="image_three" data-pb-style="O6KNEVF">
+                    </div>
+                    <div class="section-content">
+                        <h2 class="section-content-header" data-element="section_three_header" data-pb-style="S9WVPLB">SOLUM America Imc</h2>
+                        <p class="section-content-desc" data-element="section_three_description" data-pb-style="RRWA8AL">New Jersey, United States</p>
+                        <div class="section-action">
+                            <a class="section-actions-link" href="" target="" data-link-type="default" data-show-button="always" data-element="section_three_link"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            
+        </div>
+    </body>
+</html>

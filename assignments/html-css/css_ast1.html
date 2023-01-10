@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>CSS ACT 1</title>
+        <style>
+
+            body {
+                 background-color: rgb(239, 92, 92); 
+            }
+
+            header  {
+                position: sticky;
+                top: 0px;
+            }
+
+            .heading {
+                background-color: rgb(127, 255, 212);
+                text-align: center;
+                width: 1024px;
+                margin: 0px auto;
+                font-size: 30px;
+            }
+
+            .parent_div {
+                width: 1024px;
+                height: 1080px;
+                margin: 0px auto;
+            }
+
+            .infoblock  {
+                max-width: 400px;
+                display: inline-block;
+                background-color: rgb(238, 202, 158);
+
+            }
+
+            #left_block {
+                float:left;
+            }
+
+            #right_block {
+                float: right;
+            }
+
+            .p_image{
+                text-align:center;
+            }
+
+            .image  {
+                padding: 10px;
+                height:350px;
+                width:350px;
+            }
+
+            .info{
+                padding:25px;
+                word-spacing: 10px;
+                line-height: 1.5;
+                text-transform: uppercase;
+                text-align:justify;
+            }
+
+            .button_div {
+                margin:20px auto;
+                text-align: center;
+            }
+
+            .button {
+                background-color: rgb(166, 41, 41);
+                color: rgb(255, 255, 255);
+                text-transform: capitalize;
+                padding: 10px 30px;
+                border: none;
+                box-shadow: 0px 2px black;
+            }
+
+            #left_button{
+                border-radius: 30px;
+            }
+
+            #right_button{
+                border-radius: 10px;
+            }
+ 
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="heading">
+                <h1>FIXED</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="parent_div">
+                <div class="infoblock_button" id="left_block">
+                    <div class="infoblock">
+                        <p class="p_image">
+                            <img class="image" src="https://ih1.redbubble.net/image.2631797980.5648/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="random image">
+                        </p>
+                        <p class="info">
+                            simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
+                        </p>
+                    </div>
+                    <div class="button_div">
+                        <button class="button" id="left_button">BUTTON</button>
+                    </div>
+                </div>
+
+                <div class="infoblock_button" id="right_block">
+                    <div class="infoblock">
+                        <p class="p_image">
+                            <img class="image" src="https://ih1.redbubble.net/image.2631797980.5648/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="random image">
+                        </p>
+                        <p class="info">
+                            simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
+                        </p>
+                    </div>
+                    <div class="button_div">
+                        <button class="button" id="right_button">BUTTON</button>
+                    </div>
+
+                </div>  
+            </div>
+        </main>
+
+
+    </body>
+</html>

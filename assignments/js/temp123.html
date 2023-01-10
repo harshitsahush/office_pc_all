@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dynamic JS Quiz</title>
+        <style>
+            body{
+                background-color: rgb(31, 43, 65);
+            }
+
+            #parent_container{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding: 50px;
+            }
+
+            #main_container{
+                background-color: rgb(120, 120, 120);
+                max-width: 800px;
+                border-radius: 10px;
+                border: 3px dashed rgb(28, 28, 28);
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+                row-gap: 20px;
+                align-items: center;
+            }
+
+            #upper_container{
+                font-size: 20px;
+                text-align: center;
+                
+            }
+        </style>
+
+        <script>
+            "use strict";
+            document.addEventListener("DOMContentLoaded", ()=> {
+                var correct_ans=0;
+                var total_questions=5;
+                var question_counter=-1;
+                var option_id_counter;
+                var name;
+
+                // for checking later if this is after a refresh
+                var data = null;
+                
+                // question_n-1_config = [question text, [option1, option2 .... option n], correct answer index]
+                // remember that option id starts from 'op0'
+                var question_0_config = ["6 + 3 ?", [ '2', '5', '9', '11' ], 'op2'];
+                var question_1_config = ["6 * 3 ?", [ '18', '23'], 'op0'];
+                var question_2_config = ["6 / 3 ?", [ '20', '2', '1', '9', '3'], 'op1'];
+                var question_3_config = ["6 % 3 ?", [ '1', '2', '4', '9', '0'], 'op4'];
+                var question_4_config = ["6 ^ 3 ?", [ '180', '236', '216'], 'op2'];
+                var question_set = [question_0_config, question_1_config, question_2_config, question_3_config, question_4_config];
+
+                first_page();
+
+                function first_page()
+                {
+                    question_counter=-1;
+                    correct_ans = 0;
+                    name = null;
+                    document.getElementById("mid_container_heading").innerText = "Please enter your name.";
+
+                    const name_box = document.createElement("input");
+                    name_box.setAttribute("type", "input");
+                    name_box.setAttribute("id", "name_field");
+                    name_box.setAttribute("value", "");
+                    name_box.setAttribute("placeholder", "Anonymous");
+                    document.getElementById("mid_container_heading").appendChild(name_box);
+
+                    document.getElementById("mid_container_question").innerText = "";
+                    document.getElementById("mid_container_options").innerText = ""; 
+
+                    document.getElementById("lower_container").innerHTML = "";
+                    const next_button = document.createElement("button");
+                    next_button.id = "next_button";
+                    next_button.innerHTML = "Next";
+                    document.getElementById("lower_container").appendChild(next_button);
+
+                    
+                }
+
+                function take_name()
+                {
+                    name = document.getElementById("name_field").value;
+                    if(name == "")
+                    {
+                        alert("Please enter a name!");
+                    }
+                    else
+                    {
+                        question_counter++;
+                        load_next_question();
+                    }
+                }
+
+                function atleast_one_selected()
+                {
+                    let isSelected = false;
+                    const all_options = document.getElementsByName("options");
+                    for(let i = 0; i < option_id_counter; i++) 
+                    {   
+                        if(all_options[i].checked == true)
+                        {
+                            isSelected = true;
+                        }
+                    }
+                    return isSelected;
+                }
+
+                function load_next_question()
+                {
+                    var question_no = question_counter + 1;     // solely to display the question no. in heading
+                    document.getElementById("mid_container_heading").innerText = "QUESTION " + question_no + ""; 
+                    document.getElementById("mid_container_question").innerText = question_set[question_counter][0];   //sets the question text
+                    //reset the "mid_container_options", because options only get appended
+                    document.getElementById("mid_container_options").innerText = "";
+
+
+                    option_id_counter=0;        // will use for creating 'id' for each option
+                    question_set[question_counter][1].forEach(option => {
+                        const option_para = document.createElement("p");
+                        document.getElementById("mid_container_options").appendChild(option_para);
+                        const op = document.createElement("input");
+                        op.setAttribute("type", "radio");
+                        op.setAttribute("name", "options");
+                        op.setAttribute("id", "op"+ option_id_counter +"");
+                        option_para.appendChild(op);
+                        const option_text = document.createElement("span");
+                        option_text.innerText = option;
+                        option_para.appendChild(option_text);
+                        option_id_counter++;
+                    });
+
+                }
+
+                function check_answer()
+                {
+                    
+                    if(document.getElementById(question_set[question_counter][2]).checked == true)
+                    {
+                        correct_ans++;
+                    }
+                    question_counter++;
+                }
+
+                function load_result()
+                {
+                    document.getElementById("mid_container_heading").innerText = "RESULT:";
+                    document.getElementById("mid_container_question").innerText = name + " scored " +correct_ans + " out of " + total_questions +".\n";
+                    document.getElementById("mid_container_options").innerText = "";
+                    document.getElementById("lower_container").innerHTML = "";
+
+
+                    function append_result_to_file(abc)
+                    {
+                        var textFile = null;
+                        if (data == null)   // ie this is the first attempt at quiz
+                        {
+                            data = new Blob([abc], {type: 'text/plain'});
+                        }
+                        else                // subsequent attempts
+                        {
+                            data = new Blob([data, abc], { type: "text/plain" });
+                        }
+
+                        textFile = window.URL.createObjectURL(data);
+
+                        return textFile;
+                    }
+
+                    // creation of link to download
+                    var link = append_result_to_file(document.getElementById("mid_container_question").innerText);
+                    const doc_link = document.createElement("a");
+                    doc_link.href = link;
+                    doc_link.download = "result.txt";
+                    doc_link.innerText = "Download cumulative result";
+                    document.getElementById("mid_container_options").appendChild(doc_link);
+
+
+                    // creatioon of the re-test button
+                    const retest = document.createElement("button");
+                    retest.id = "retest_button";
+                    retest.innerText = "ReTest";
+                    document.getElementById("lower_container").appendChild(retest);
+                }
+
+                document.addEventListener("click", function(e){
+                    if(e.target.id == "next_button")
+                    {
+                        if(question_counter == -1)
+                        {
+                            take_name();
+                        }
+                        else
+                        {
+                            if(atleast_one_selected() == true)
+                            {
+                                if(question_counter < total_questions && question_counter >= 0)
+                                {
+                                    check_answer();
+                                }
+                                if(question_counter < total_questions && question_counter >= 0)
+                                {
+                                    load_next_question();
+                                }
+                                if(question_counter == total_questions)
+                                {
+                                    load_result();
+                                }
+                            }
+                            else
+                            {
+                                alert("Select atleast 1 option.")
+                            }
+                        }
+                    }
+                    
+                    if(e.target.id == "retest_button")
+                    {
+                        first_page();
+                    }
+                })
+            })
+
+        </script>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="main_container">
+                <div id="upper_container">
+                </div>
+    
+                <div id="mid_container">
+                    <div id="mid_container_heading"></div>
+                    <div id="mid_container_question"></div>
+                    <div id="mid_container_options"></div>
+                </div>
+    
+                <div id="lower_container">
+                    <!-- <button id="next_button">Next</button> -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise 3 - Timer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                background-color: rgb(31, 43, 65);
+            }
+
+            #parent_container{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding: 50px;
+            }
+
+            #main_container{
+                background-color: rgb(20, 20, 20);
+                max-width: 800px;
+                border-radius: 10px;
+                border: 2px dashed rgb(128, 128, 128);
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+                row-gap: 20px;
+                align-items: center;
+            }
+
+            .upper_part{
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .mid_part{
+                width: 200px;
+                height:200px;
+                border-radius: 50%;
+                font-size: 40px;
+                background-color: rgb(199, 127, 101);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bottom_part{
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                column-gap: 5px;
+            }
+
+            .button{
+                font-size: 20px;
+                color: #ffffff;
+                padding: 13px;
+                background-color: rgb(35, 35, 129);
+                border: none;
+                border-radius: 5px;
+            }
+
+            .input_boxes{
+                max-width: 50px;
+                padding:10px;
+                border-radius: 5px;
+                font-size: 15px;;
+            }
+        </style>
+
+        <script>
+            "use strict";
+            document.addEventListener('DOMContentLoaded', ()=>
+            {
+                var total_time;
+                var time_elapsed = 0;
+                var time_elapsed_hours=0;
+                var time_elapsed_mins=0;
+                var time_elapsed_secs=0;
+                var interval_id_1;
+
+                function start_timer()
+                {
+                    total_time = document.getElementById("input_hours").value * 3600 + document.getElementById("input_mins"). value *60 + document.getElementById("input_secs").value;
+                    
+                    console.log(total_time + 'start');
+                    if(total_time == '0')    // ie no time has been set, run till infinity( checked value from console)
+                    {
+                        total_time = Math.pow(10, 1000);        // max positive number in js
+
+                        if(interval_id_1 == null)
+                        {
+                            interval_id_1 = setInterval(time_increment, 1000);
+                        }
+                    }
+
+                    else
+                    {
+                        total_time = Number(total_time);
+                        if(total_time < 0)
+                        {
+                            alert("Please enter valid amount of time.")
+                        }
+                        else
+                        {
+                            if(interval_id_1 == null)
+                            {
+                                interval_id_1 = setInterval(time_increment, 1000);
+                            }
+                        }
+                    }
+                }
+
+                function time_increment()
+                {
+                    if(time_elapsed < total_time)
+                    {
+                        time_elapsed_hours = Math.floor(time_elapsed / 3600);
+                        time_elapsed_mins = Math.floor((time_elapsed - time_elapsed_hours*3600)/60);
+                        time_elapsed_secs = time_elapsed - time_elapsed_hours*3600 - time_elapsed_mins*60;   
+                        document.getElementById("timer").innerText = 
+                                                                        (time_elapsed_hours).toString().padStart(2, '0') + ":"+
+                                                                        (time_elapsed_mins).toString().padStart(2, '0')+":"+
+                                                                        (time_elapsed_secs).toString().padStart(2, '0');
+
+                        time_elapsed++;
+                    }
+                    else
+                    {
+                        alert("Time Up");
+                        clearInterval(interval_id_1);
+                        interval_id_1 = null;
+                        time_elapsed = 0;
+                        time_elapsed_hours = Math.floor(time_elapsed / 3600);
+                        time_elapsed_mins = Math.floor((time_elapsed - time_elapsed_hours*3600)/60);
+                        time_elapsed_secs = time_elapsed - time_elapsed_hours*3600 - time_elapsed_mins*60;  
+
+                        document.getElementById("timer").innerText = 
+                                                                        (time_elapsed_hours).toString().padStart(2, '0') + ":"+
+                                                                        (time_elapsed_mins).toString().padStart(2, '0')+":"+
+                                                                        (time_elapsed_secs).toString().padStart(2, '0');      
+                                                                                // so timer automatically gets reset
+                    }
+                }
+
+                function pause_timer()
+                {
+                    clearInterval(interval_id_1);
+                    interval_id_1 = null;
+                }
+
+                function stop_timer()           // resets everything to default value
+                {
+                    clearInterval(interval_id_1);
+                    interval_id_1 = null;
+                    total_time = "0";
+                    time_elapsed = 0;
+                    time_elapsed_hours = Math.floor(time_elapsed / 3600);
+                    time_elapsed_mins = Math.floor((time_elapsed - time_elapsed_hours*3600)/60);
+                    time_elapsed_secs = time_elapsed - time_elapsed_hours*3600 - time_elapsed_mins*60;      // to show 0 when it is reset
+
+                    console.log(total_time);
+                    document.getElementById("timer").innerText = 
+                                                                        (time_elapsed_hours).toString().padStart(2, '0') + ":"+
+                                                                        (time_elapsed_mins).toString().padStart(2, '0')+":"+
+                                                                        (time_elapsed_secs).toString().padStart(2, '0');
+                }
+                
+
+                document.addEventListener('click', function(e){
+                    if(e.target.id == "start")
+                    {
+                        start_timer();
+                    }
+                })
+
+                document.addEventListener('click', function(e){
+                    if(e.target.id == "pause")
+                    {
+                        pause_timer();
+                    }
+                })
+
+                document.addEventListener('click', function(e){
+                    if(e.target.id == "stop")
+                    {
+                        stop_timer();
+                    }
+                })
+            })
+
+
+        </script>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="main_container">
+                <div class="upper_part">
+                    <input type="number" id="input_hours" class= "input_boxes" value=""  placeholder="hour"/>
+                    <input type="number" id="input_mins" class= "input_boxes" value="" placeholder="mins"/>
+                    <input type="number" id="input_secs" class= "input_boxes" value="" placeholder="secs"/>
+                </div>
+
+                <div id="timer" class="mid_part">
+                    00:00:00
+                </div>
+
+                <div class="bottom_part">
+                    <button id="start" class="button">Start</button>
+                    <button id="pause" class="button">Pause</button>
+                    <button id="stop" class="button">Reset</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

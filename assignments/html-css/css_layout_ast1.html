@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>CSS Flex</title>
+        <style>
+
+            body{
+                background-color: rgb(185, 67, 67);
+            }
+
+            .flex_cont1{
+                display:flex;
+                width:1024px;
+                flex-direction:column;
+                justify-content: center;
+                margin:30px auto;
+            }
+
+            .upper_part{
+                display:flex;
+                flex-direction:column;
+                align-items: center;
+                background-color:white;
+                width: 1024px;
+                max-height: 40%;
+
+            }
+
+            .main_heading{
+                font-size:60px;
+                margin:20px;
+            }
+
+            .upper_text{
+                text-transform: uppercase;
+                word-spacing: 10px;
+                line-height: 1.5;
+                padding:0px 15px;
+                margin-bottom: 30px;
+                text-align: justify;
+            }
+
+            .lower_part{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width:100%;
+            }
+            
+            .info_block{
+                max-width: 275px;
+                color: white;
+            }
+
+            .mini_heading{
+                font-size: 25px;
+                text-align: center;
+                text-decoration: underline;
+            }
+
+            .info_lower{
+                font-size: 15px;
+                text-align: justify;
+                word-spacing: 8px;
+                line-height: 1.3;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="flex_cont1">
+            <div class="upper_part">
+                <div class="main_heading">
+                    HELLO WORLD!!!
+                </div>
+                <div class="upper_text">
+                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets co
+                </div>
+            </div>
+            <div class="lower_part">
+                <div class="info_block">
+                    <p class="mini_heading">
+                        THIS IS THE HEADING
+                    </p>
+                    <p class="info_lower"> 
+                        simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially]   
+                    </p>
+                </div>
+
+                <div class="info_block">
+                    <p class="mini_heading">
+                        THIS IS THE HEADING
+                    </p>
+                    <p class="info_lower"> 
+                        simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially]   
+                    </p>
+                </div>
+
+                <div class="info_block">
+                    <p class="mini_heading">
+                        THIS IS THE HEADING
+                    </p>
+                    <p class="info_lower"> 
+                        simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially]   
+                    </p>
+                </div>
+                
+            </div>
+        </main>
+    </body>
+</html>

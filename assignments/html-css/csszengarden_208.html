@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>csszengarden/208</title>
+        <style>
+
+            *{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            body{
+                background-image: url(https://unsplash.com/photos/_0sEjWfAK3Q/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDc3&force=true&w=1920);
+                background-size: cover;
+                background-attachment: scroll;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            #header{
+                font-size: 40px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                padding:20px 60px;
+                margin: 0px auto;
+                text-align: center;
+                width: min-content;
+                white-space: nowrap;
+                background-color: rgba(47, 79, 79, 0.3);
+            }
+
+            #navbar{
+                background-color: rgba(47, 79, 79, 0.3);
+                border-radius: 10px;
+                display:flex;
+                margin: 10px;
+                padding: 0px 10px;
+                height:50px;
+                align-items: center;
+                column-gap: 5px;
+            }
+
+            .navbar_tab{
+                border-radius: 10px;
+                font-size: 17px;
+                padding: 10px;
+                background-color: rgba(47, 79, 79, 0);
+                border: 0px;
+            }
+
+            .navbar_tab:hover{
+                background-color: rgba(47, 79, 79, 0.5);
+                transition-duration: 0.4s;
+
+            }
+
+
+            #main_container{
+                max-width: 1024px;
+                margin:10px auto;
+                background-color: rgba(47, 79, 79, 0.3);
+                padding: 20px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                display:flex;
+                column-gap: 15px;
+                height:100%;
+                margin-bottom: 0px;
+            }
+
+            #side_menu{
+                display:flex;
+                flex-direction: column;
+                row-gap: 7px;
+                max-width:300px;
+            }
+
+            .side_menu_box{
+                border-radius: 15px;
+                background-color: rgba(47, 79, 79, 0.2);
+                padding:20px;
+                min-width:150px;
+            }
+
+            .side_menu_box_heading{
+                text-align: left;
+                font-size: 25px;
+                color:rgb(47, 79, 79);
+                margin:0px;
+                margin-left: 10px;
+            }
+
+            .side_menu_box_options{
+                text-align: left;
+                list-style-type: none;
+                font-size: 15px;
+                line-height: 1.5;
+                margin-bottom: 0px;
+                padding-left: 10px;
+            }
+
+            #main_content{
+                background-color: rgba(47, 79, 79, 0.2);
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                row-gap: 10px;
+                border-radius: 15px;
+                padding:20px;
+                
+            }
+
+            .main_content_box{
+                padding: 10px;
+                background-color:rgb(255, 255, 255, 0.3);
+                border-radius: 15px;
+                display: flex;
+            }
+
+            img{
+                width:70px;
+                height: 100%;
+            }
+            
+            .main_content_box:nth-of-type(odd) img{
+                margin-right: 10px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+            .main_content_box:nth-of-type(even) img{
+                order: 2;
+                margin-left: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            .main_content_box_heading{
+                font-size: 25px;
+                color:rgb(47, 79, 79);
+                margin-bottom: 10px;
+            }
+
+            @media screen and (max-width: 650px) {
+
+                .side_menu_box{
+                    min-width: auto;
+                }
+
+                #main_container{
+                    padding: 10px;
+                    font-size: 17px;
+                    padding: 10px;
+                    column-gap: 10px;
+                }
+
+                #main_content{
+                    padding: 10px;
+                }
+            }
+
+            @media screen and (max-width: 460px) {
+
+                #header{
+                    font-size: 30px;
+                    padding: 15px 25px;
+                }
+
+                #navbar{
+                    padding: 5px;
+                    height: auto;
+                    flex-wrap: wrap;
+                }
+
+                .navbar_tab {
+                    font-size: 14px;
+                    padding: 5px;
+                }
+
+                #main_container {
+                    column-gap: 5px;
+                    row-gap: 10px;
+                    flex-direction: column;
+                }
+
+                #side_menu{
+                    max-width: none;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    column-gap: 5px;
+                    row-gap:5px;
+                }
+
+                #main_content{
+                    padding: 10px;
+                }
+
+                .main_content_box{
+                    flex-direction: column;
+                }
+
+                img{
+                    width: 100%;
+                    height: 40px;
+                    border-radius: 10px;
+                }
+
+                .main_content_box:nth-of-type(even) img{
+                    order: -1;
+                    margin-left: 0px;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }   
+
+                .main_content_box_text > p{
+                    margin-top: 7px;
+                    margin-bottom: 7px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="header">
+            LOREM IPSUM
+        </div>
+
+        <div id="navbar">
+            <div>
+                <a href="#">
+                    <button class="navbar_tab">Home</button>
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <button class="navbar_tab">Solutions</button>
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <button class="navbar_tab">Testimonials</button>
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <button class="navbar_tab">About Us</button>
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <button class="navbar_tab">FAQ</button>
+                </a>
+            </div>   
+        </div>
+
+        <div id="main_container">
+            <div id="side_menu">
+                <div class="side_menu_box">
+                    <p class="side_menu_box_heading">
+                        Archives
+                    </p>
+                    <ul class="side_menu_box_options">
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                        <li>Option 4</li>
+                    </ul>
+                </div>
+                <div class="side_menu_box">
+                    <p class="side_menu_box_heading">
+                        Archives
+                    </p>
+                    <ul class="side_menu_box_options">
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                        <li>Option 4</li>
+                    </ul>
+                </div>
+                <div class="side_menu_box">
+                    <p class="side_menu_box_heading">
+                        Archives
+                    </p>
+                    <ul class="side_menu_box_options">
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                        <li>Option 4</li>
+                    </ul>
+                </div>
+                <div class="side_menu_box">
+                    <p class="side_menu_box_heading">
+                        Archives
+                    </p>
+                    <ul class="side_menu_box_options">
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                        <li>Option 4</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main_content">
+                <div class="main_content_box">
+                    <img src="https://unsplash.com/photos/jY9rX-E7ztU/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDM4&force=true&w=640">
+
+                    <div class="main_content_box_text">
+                        <p class="main_content_box_heading">
+                            How did this all begin?
+                        </p>
+
+                        <p>
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                        </p>
+                    </div>
+                </div>
+                <div class="main_content_box">
+                    <img src="https://unsplash.com/photos/jY9rX-E7ztU/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDM4&force=true&w=640">
+                    <div class="main_content_box_text">
+                        <p class="main_content_box_heading">
+                            How did this all begin?
+                        </p>
+
+                        <p>
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                        </p>
+                    </div>
+                </div>
+                <div class="main_content_box">
+                    <img src="https://unsplash.com/photos/jY9rX-E7ztU/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDM4&force=true&w=640">
+                    <div class="main_content_box_text">
+                        <p class="main_content_box_heading">
+                            How did this all begin?
+                        </p>
+
+                        <p>
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                        </p>
+                    </div>
+                </div>
+                <div class="main_content_box">
+                    <img src="https://unsplash.com/photos/jY9rX-E7ztU/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDM4&force=true&w=640">
+                    <div class="main_content_box_text">
+                        <p class="main_content_box_heading">
+                            How did this all begin?
+                        </p>
+
+                        <p>
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                        </p>
+                    </div>
+                </div>
+                <div class="main_content_box">
+                    <img src="https://unsplash.com/photos/jY9rX-E7ztU/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjcyMDMwMDM4&force=true&w=640">
+                    <div class="main_content_box_text">
+                        <p class="main_content_box_heading">
+                            How did this all begin?
+                        </p>
+
+                        <p>
+                            is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>

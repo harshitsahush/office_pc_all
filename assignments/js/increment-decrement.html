@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Increment Decrement</title>
+        <meta name="viewport", content="width=device-width, initial-scale=1">
+        <style>
+
+            body {
+                background-color: rgb(31, 43, 65);
+                height: 100vh;
+            }
+
+            #parent_container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height:100%;
+                padding:20px;
+            }
+
+            #content_box {
+                background-color: rgb(20, 20, 20);
+                border: 2px dashed rgb(128, 128, 128);
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                align-items: center;
+                padding: 50px 30px;
+            }
+
+            #content_box_heading {
+                font-size: 30px;
+                color: rgb(255, 255, 255);
+                text-align: center;
+            }
+
+            #entry_box{
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .button {
+                font-size: 20px;
+                height: 50px;
+                width: 50px;
+                background-color: rgb(83, 83, 214);
+                border-radius: 10px;
+                color:rgb(255, 255, 255);
+                border: none;
+            }
+
+        </style>
+            
+        <script>
+            document.addEventListener('DOMContentLoaded', () =>{
+                function increment()
+                {
+                    let current_value = document.getElementById("entry_box").value;
+                    if(current_value < 0)
+                    {
+                        current_value = 0;
+                    }
+                    else
+                    {
+                        current_value++;
+                    }
+                    document.getElementById("entry_box").value = current_value;
+                }
+
+                function decrement()
+                {
+                    let current_value = document.getElementById("entry_box").value;
+                    if(current_value <= 0)
+                    {
+                        current_value = 0;
+                    }
+                    else
+                    {
+                        current_value--;
+                    }
+                    document.getElementById("entry_box").value = current_value;
+                }
+                document.querySelector('#increment_button').addEventListener('click', increment);
+                document.querySelector('#decrement_button').addEventListener('click', decrement);
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="content_box">
+                <div id="content_box_heading">
+                    Increment And Decrement Button
+                </div>
+
+                <div id="content_box_data">
+                    <input type="number" id="entry_box" value=0 />
+                </div>
+
+                <div id="content_box_buttons">
+                    <button id="increment_button" class="button">+</button>
+                    <button id="decrement_button" class="button">-</button>                   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

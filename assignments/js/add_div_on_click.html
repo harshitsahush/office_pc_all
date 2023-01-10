@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Div On Click</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                background-color: rgb(31, 43, 65);
+            }
+
+            #parent_container{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+
+            #main_content{
+                max-width: 700px;
+                border-radius: 10px;
+                border: 2px dashed rgb(128, 128, 128);
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+                row-gap: 10px;
+            }
+
+            #button{
+                font-size: 20px;
+                color: #ffffff;
+                padding: 13px;
+                background-color: rgb(35, 35, 129);
+                border: none;
+                border-radius: 5px;
+            }
+
+            #main_content_bottom{
+                display:flex;
+                flex-wrap: wrap;
+                column-gap: 10px;
+                row-gap: 10px;
+            }
+
+            .tablet{
+                height:70px;
+                width:70px;
+                font-size: 35px;
+                text-align: center;
+                background-color: rgb(127, 255, 212);
+                border-radius: 10px;
+                border: none;
+                line-height: 70px;
+            }
+
+        </style>
+
+        <script>
+            var count=0;
+            function createbutton(x)
+            {
+                x++;
+                const xyz=document.createElement("div");
+                xyz.innerText = x;
+                document.getElementById("main_content_bottom").appendChild(xyz);
+                xyz.classList.add("tablet");
+                count++;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="parent_container">
+            <div id="main_content">
+                <div id="main_content_top">
+                    <button id="button" onclick="createbutton(count)">Add Element</button>
+                </div>
+
+                <div id="main_content_bottom">
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

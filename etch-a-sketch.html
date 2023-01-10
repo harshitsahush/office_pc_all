@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Etch-a-sketch</title>
+
+        <style>
+
+            .remove{                        /* will remove the element */
+                display: none;
+            }
+
+            .main_container{
+                height:100vh;
+                width:100vh;
+                display: flex;              /* to arrange the child blocks */
+            }
+
+            .individual_block{
+
+            }
+
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", ()=>{
+                
+                document.addEventListener("click", function(e){
+                    if(e.target.id=="button")
+                    {
+                        if(document.getElementById("input_number").value=="" || document.getElementById("input_number").value<1 || document.getElementById("input_number").value>=100)
+                        {
+                            alert("Please input a value >0 and <=100");
+                        }
+
+                        else
+                        {   
+                            let num = document.getElementById("input_number").value; 
+                            let calc = 100/num;
+                            //remove the box containing the input/button
+                            document.getElementsByClassName("input_window")[0].classList.add("remove");
+                            
+                            //create a block and run a loop appropriate time to add them to main container
+                            const child_element=document.createElement("div");
+                            child_element.setAttribute("style", "height:"+calc+"vh;"+"width:"+calc+"vh;");
+
+                            for(let i=0; i<num; i++)
+                            {   
+                                console.log(i); 
+                                document.getElementsByClassName("main_container")[0].appendChild(child_element);
+                            }
+                            
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+
+
+
+    <body>
+        <div class="main_container">
+            <div class="input_window">
+                <p>Please enter the number of boxes</p>
+                <input type="number" id="input_number" value=""/>
+                <button id="button">OK</button>
+            </div>
+        </div>
+    </body>
+</html>

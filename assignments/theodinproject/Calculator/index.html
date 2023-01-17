@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.js" integrity="sha512-PRRHSwgn8QJinp43y5B698YK/FApqSvwmd7kVu8NWMksCl/3daKnNbPNWPuGKDrpIIb+0Dg5W55VSbZi0QG60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            "use strict";
+            document.addEventListener("DOMContentLoaded", ()=>{
+                var exp="";                                         //will contain the expression
+
+                document.addEventListener("click", (e)=>{           //if any button is pressed, update the content
+                    if(e.target.classList.contains("button"))
+                    {
+                        if(e.target.classList.contains("all-clear"))
+                        {
+                            exp="";
+                            document.getElementsByClassName("result-area")[0].innerText = "";
+                            document.getElementsByClassName("input-area")[0].innerText = "";
+                        }
+
+                        if(e.target.classList.contains("clear"))
+                        {
+                            exp = exp.slice(0, -1);
+                            document.getElementsByClassName("input-area")[0].innerText = exp;
+                        }
+
+                        if(e.target.classList.contains("equal")) //end expression and show result
+                            {
+                                exp = math.evaluate(exp);            //evalute previous expression
+                                document.getElementsByClassName("result-area")[0].innerText = exp;
+                            }
+
+                        if(e.target.classList.contains("operator"))
+                        {
+                            exp = math.evaluate(exp);               //evalute previous expression
+                        }
+                        
+                        exp = exp + e.target.value;                 //add operator/operand to the expression
+                        document.getElementsByClassName("input-area")[0].innerText = exp;
+                    }
+                });
+                
+            });
+
+        </script>
+
+        <style>
+            .main-container{
+                width:250px;
+                margin: auto;
+                border:2px dotted black;
+                border-radius:7px;
+                background-color: rgb(202, 195, 195);
+                padding:10px;
+            }
+
+            .top-container{
+                border-radius: 7px;
+                overflow:hidden;
+            }
+
+            .bottom-container{
+                display:grid;
+                grid-template-columns: auto auto auto auto;
+                grid-template-rows: auto auto auto auto auto;
+                gap:5px;
+                padding-top: 10px;
+            }
+
+            .input-area{
+                height:40px;
+                background-color: rgb(163, 160, 160);
+                line-height: 40px;
+                text-align: right;
+                padding:5px;
+            }
+
+            .result-area{
+                height:60px;
+                background-color: grey;
+                line-height: 60px;
+                text-align: right;
+                font-size: 35px;
+                padding:5px;
+            }
+
+            .item-16{
+                grid-row:4 / 6;
+                grid-column: 4 / 5;
+            }
+
+            .item-17{
+                grid-row:5 / 6;
+                grid-column: 1 / 4;
+            }
+
+            .button{
+                height:100%;
+                width:100%;
+                padding:10px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="top-container">
+                <div class="input-area"></div>
+                <div class="result-area"></div>
+            </div>
+
+            <div class="bottom-container">
+                <div class="item-1"><button class="button all-clear">AC</button></div>
+                <div class="item-2"><button class="button clear">C</button></div>
+                <div class="item-3"><button class="button operator" value="/">/</button></div>
+                <div class="item-4"><button class="button operator" value="*">*</button></div>
+                <div class="item-5"><button class="button" value="7">7</button></div>
+                <div class="item-6"><button class="button" value="8">8</button></div>
+                <div class="item-7"><button class="button" value="9">9</button></div>
+                <div class="item-8"><button class="button operator" value="-">-</button></div>
+                <div class="item-9"><button class="button" value="4">4</button></div>
+                <div class="item-10"><button class="button" value="5">5</button></div>
+                <div class="item-11"><button class="button" value="6">6</button></div>
+                <div class="item-12"><button class="button operator" value="+">+</button></div>
+                <div class="item-13"><button class="button" value="1">1</button></div>
+                <div class="item-14"><button class="button" value="2">2</button></div>
+                <div class="item-15"><button class="button" value="3">3</button></div>
+                <div class="item-16"><button class="button equal">=</button></div>
+                <div class="item-17"><button class="button" value="0">0</button></div>
+            </div>
+        </div>
+    </body>
+</html>

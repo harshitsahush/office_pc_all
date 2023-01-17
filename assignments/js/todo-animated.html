@@ -69,8 +69,6 @@
                 display:flex;
                 justify-content: space-between;
                 width:100%;
-                animation-duration: 2s;
-                animation-fill-mode: forwards;
             }
 
             .remove_button {
@@ -83,10 +81,6 @@
                 justify-self: right;
             }
 
-            @keyframes strike {
-                from{text-decoration: none;}
-                to{text-decoration: line-through;}
-            }
 
         </style>
 
@@ -98,6 +92,8 @@
                 let todo_task = document.getElementById("todo_adder").value;
                 const task = document.createElement("div");
                 task.innerText= todo_task;
+                //make the input empty for ease
+                document.getElementById("todo_adder").value = "";
                 document.getElementById("main_content_bottom").appendChild(task);
                 task.classList.add("tablet");
 
@@ -118,7 +114,7 @@
             document.addEventListener("click", function(e){
                 if(e.target.className == "remove_button")
                 {
-                    e.target.parentElement.setAttribute("style", "animation-name:strike;");
+                    e.target.parentElement.setAttribute("style", "text-decoration:line-through;");
                 }
             })
 

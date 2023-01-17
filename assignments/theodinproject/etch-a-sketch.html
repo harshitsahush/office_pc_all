@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Pointer follower</title>
+        <title>Etch-a-sketch</title>
 
         <style>
 
@@ -9,16 +9,15 @@
             }
 
             .main_container{
-                height:100vh;
-                width:100vh;
+                height:500px;
+                width:500px;
                 display: flex;              /* to arrange the child blocks */
                 flex-wrap: wrap;
-                background-color: rgb(80, 80, 114);
+                border: 2px solid black;
             }
 
-
             .block-active{
-                background-color: red!important;
+                background-color: grey;
             }
 
         </style>
@@ -27,7 +26,7 @@
             document.addEventListener("DOMContentLoaded", ()=>{
                 
                 document.addEventListener("click", function(e){
-                    if(e.target.id=="button")
+                    if(e.target.id=="ok-button")
                     {
                         if(document.getElementById("input_number").value=="" || document.getElementById("input_number").value<1 || document.getElementById("input_number").value>=100)
                         {
@@ -35,15 +34,17 @@
                         }
 
                         else
-                        {   
+                        {  
+                            //clear the drawing space
+                            document.getElementsByClassName("main_container")[0].textContent = "";
+                            
+
                             let num = document.getElementById("input_number").value; 
-                            let calc = 100/num;
-                            //remove the box containing the input/button
-                            document.getElementsByClassName("input_window")[0].classList.add("remove");
+                            let calc = 500/num;             //bc the total height/width is 400
                             
                             //create a block and run a loop appropriate time to add them to main container
                             let child_element=document.createElement("div");
-                            child_element.setAttribute("style", "height:"+calc+"vh;"+"width:"+calc+"vh;flex-shrink:0;");
+                            child_element.setAttribute("style", "height:"+calc+"px;"+"width:"+calc+"px;flex-shrink:0;");
                             child_element.classList.add("block");
 
                             for(let i=0; i<num*num; i++)        //since we want a grid of num*num
@@ -54,21 +55,23 @@
                             document.addEventListener("mouseover", function(e){
                                 if(e.target.className == "block")
                                 {
-                                    console.log(e);
-                                    e.target.classList.add("block-active");
-                                }
-                            });
-
-                            document.addEventListener("mouseout", function(e){
-                                if(e.target.classList.contains("block"))
-                                {
-                                    e.target.classList.remove("block-active");
+                                    if(document.getElementById("color-select").selectedIndex == 0)      //grey is selected
+                                    {
+                                        e.target.style.backgroundColor = "grey";
+                                    }
+                                    if(document.getElementById("color-select").selectedIndex == 1)      //rainbow is selected
+                                    {
+                                        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                                        e.target.style.background = "#"+randomColor;
+                                    }
                                 }
                             });
                             
                         }
                     }
                 });
+
+
             });
         </script>
     </head>
@@ -76,12 +79,17 @@
 
 
     <body>
+        <div class="input_window">
+            <p>Please enter the number of rows/columns</p>
+            <input type="number" id="input_number" value=""/>
+            <select name="color" id="color-select">
+                <option value="grey">Grey(default)</option>
+                <option value="rainbow">Rainbow</option>
+            </select>
+            <button id="ok-button">OK</button>
+        </div>
+        <br><br>
         <div class="main_container">
-            <div class="input_window">
-                <p>Please enter the number of boxes</p>
-                <input type="number" id="input_number" value=""/>
-                <button id="button">OK</button>
-            </div>
         </div>
     </body>
 </html>

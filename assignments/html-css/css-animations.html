@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css animations</title>
+    <style>
+        .main-container{
+            height:100px;
+            width:100px;
+            transition: all 0.5s;
+        }
+
+        .red-button:hover ~ .main-container{
+            background-color: red;
+        }
+
+        .yellow-button:hover ~ .main-container{
+            background-color: yellow;
+        }
+
+        .grey-button:hover ~ .main-container{
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="red-button">Red</button>
+    <button class="yellow-button">Yellow</button>
+    <button class="grey-button">Grey</button>
+    <div class="main-container"></div>
+    
+      
+</body>
+</html>

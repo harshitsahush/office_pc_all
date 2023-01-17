@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Source page</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+
+                let var1 = document.getElementById("div1").innerText;
+                var xmlrequest = new XMLHttpRequest();
+                xmlrequest.onreadystatechange = () => {
+                    if (xmlrequest.readyState === 4) {
+                        console.log(xmlrequest.response);
+                    }
+                }
+                xmlrequest.open("GET", "./fetch.php?data="+var1, true);
+                xmlrequest.send();
+                
+            })
+        </script>
+    </head>
+
+    <body>
+        <div id="div1">
+        </div>
+    </body>
+</html>

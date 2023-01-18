@@ -1,0 +1,54 @@
+.main-container{
+    width:250px;
+    margin: auto;
+    border:2px dotted black;
+    border-radius:7px;
+    background-color: rgb(202, 195, 195);
+    padding:10px;
+}
+
+.top-container{
+    border-radius: 7px;
+    overflow:hidden;
+}
+
+.bottom-container{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    gap:5px;
+    padding-top: 10px;
+}
+
+.input-area{
+    height:40px;
+    background-color: rgb(163, 160, 160);
+    line-height: 40px;
+    text-align: right;
+    padding:5px;
+}
+
+.result-area{
+    height:60px;
+    background-color: grey;
+    line-height: 60px;
+    text-align: right;
+    font-size: 35px;
+    padding:5px;
+}
+
+.item-16{
+    grid-row:4 / 6;
+    grid-column: 4 / 5;
+}
+
+.item-17{
+    grid-row:5 / 6;
+    grid-column: 1 / 4;
+}
+
+.button{
+    height:100%;
+    width:100%;
+    padding:10px;
+}

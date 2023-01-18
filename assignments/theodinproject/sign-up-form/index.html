@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./page.js"></script>
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-container">
+            <div class="banner">
+                <div class="banner-img">
+                    <img src="./resources/odin-lined.png" alt="odin logo" class="img" />
+                </div>
+                <div class="banner-heading">
+                    <p>SIGN-UP FORM</p>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="right-top-container">
+                This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. Sign up now to get started.
+                <br><br>
+                You know you want to.
+            </div>
+            <div class="right-main-container">
+                <div class="right-main-container-heading">LET'S DO THIS:</div>
+                <div class="form-area">
+                    <form id="my-form">
+                        <div class="first-name-input input">
+                            <div>FIRST NAME</div>
+                            <input type="text" required>
+                            <div class="error_msg"></div>
+                        </div>
+                        <div class="last-name-input input">
+                            <div>LAST NAME</div>
+                            <input type="text" required>
+                            <div class="error_msg"></div>
+                        </div>
+                        <div class="name-input input">
+                            <div>EMAIL</div>
+                            <input type="email" required>
+                            <div class="error_msg"></div>
+                        </div>
+                        <div class="phone-no-input input">
+                            <div>PHONE NO.</div>
+                            <input type="number" required>
+                            <div class="error_msg"></div>
+
+                        </div>
+                        <div class="password-input input">
+                            <div>PASSWORD</div>
+                            <input type="password" id="pass" value="" required>
+                            <div class="error_msg"></div>
+                        </div>
+                        <div class="confm-password-input input">
+                            <div>CONFIRM PASSWORD</div>
+                            <input type="password" id="pass2" value="" required>
+                            <div id="not_match_msg" class="error_msg"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="right-bottom-container">
+                <button type="submit" form="my-name">CREATE ACCOUNT</button><br><br>
+                <div class="right-bottom-container-text">ALREADY HAVE AN ACCOUNT? <a href="#">LOG IN!</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

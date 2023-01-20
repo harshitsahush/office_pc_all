@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const form = document.querySelector(".top-banner form");
+            const api_key = "1849bc27784206d6270877133c7a375c";
+            
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function(){
+                if(request.readyState === 4)
+                {
+                    if(request.status === 200)
+                    {
+                        console.log(request.responseText);
+                    }
+                    else
+                    {
+                        console.log("error");
+                    }
+                }
+            }
+            
+            document.addEventListener("click", (e)=>{
+                if(e.target.id == "submit")
+                {
+                    var input_city = document.getElementById("user_input").value;
+                    const url = "https://api.openweathermap.org/data/2.5/weather?q="+input_city+"&appid="+api_key;
+
+                    request.open("GET", url);
+                    request.send();
+
+                    //after extracting the data and adding it into a div to display, clear it up from temp vars, from the input field and return the focus to the input field
+                    request.responseText = input_city = "";
+                    document.getElementById("user_input").value = "";
+                    document.getElementById("user_input").focus();
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <section class="top-banner">
+        <div class="container">
+          <h1 class="heading">Simple Weather App</h1>
+          <form>
+            <input type="text" placeholder="Search for a city" id="user_input" value="" autofocus>
+            <button id="submit" type="button">SUBMIT</button>
+            <span class="msg"></span>
+          </form>
+        </div>
+      </section>
+      <section class="ajax-section">
+        <div class="container">
+          <ul class="cities"></ul>
+        </div>
+      </section>
+</body>
+</html>
